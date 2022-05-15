@@ -42,9 +42,8 @@ function submit() {
     if (x==true) {
         alert("ثبت نام با موفقیت انجام شد");
     }
-    else{
-        alert("لطفا تمام فیلدها را پر کنید");
-    }
+
+};
 function checkMelliCode(codM) {
     if (codM.length == 10) {
         if (codM == '1111111111' ||
@@ -79,9 +78,9 @@ function checkMelliCode(codM) {
     } else {
         return false;
     }
-}};
+}
 function checksheba(sheba) {
-    var shebaReg = "/^(?:IR)(?=.{24}$)[0-9]*$/";
+    var shebaReg =RegExp( "/^(?:IR)(?=.{24}$)[0-9]*$/");
     if (shebaReg.test(sheba)) {
         return true;
     }
@@ -90,7 +89,7 @@ function checksheba(sheba) {
     }
 }
 function checkEmail(email) {
-    var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+    var emailReg = new RegExp("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$") ;
     if (emailReg.test(email)) {
         return true;
     }
