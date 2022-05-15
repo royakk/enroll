@@ -1,8 +1,13 @@
-.btn{
+.btn {
     text-align: center;
     margin-top: 50px;
 }
-*{
-  padding: 5px; 
 
+* {
+    padding: 5px;
 }
+
+
+/* input:invalid {
+    box-shadow: 0 0 5px 1px red;
+} */

@@ -1,36 +1,46 @@
 <!DOCTYPE html>
 <html lang="fa">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery.farsiInput.js">
+    </script>
+    <script type="text/javascript" src="validation.js"></script>
+    <script type="text/javascript" src="fa.js"></script>
 </head>
+
 <body>
     <div class="container">
         <form id="form">
             <label for="nname">نام*:</label>
-         <input type="text" id="name" name="nname" dir="rtl" placeholder="نام خود را وارد کنید" required>
-         <label for="nfamily">  نام خانوادگی*:</label>
-        <input type="text" id="family" name="nfamily" dir="rtl" placeholder="نام خانوادگی را وارد کنید" required >
-        <label for="npname">نام پدر:</label>
-         <input type="text" id="pname" name="npname" dir="rtl" required>
-         <label for="ndate">تاریخ تولد:</label>
-         <input type="date" id="date" name="ndate" required>
-         <label for="ncodM">کدملی*:</label>
-          <input type="text" id="codM" name="ncodM">
-          <label for="nsheba">شماره شبا:</label>
-          <input type="text" id="sheba" name="nsheba" placeholder="IR" required>
-          <label for="nemail">ایمیل:</label>
-          <input type="email" id="email" name="nemail" >
-        </form>
-        <div class="btn">
-            <input type="submit" value="ثبت نام">
-      </div>
-    </div>
-    <form>
+            <input type="text" id="name" name="nname" dir="rtl" placeholder="نام خود را وارد کنید" required minlength="3" Lang="fa-IR">
+            <label for="nfamily">  نام خانوادگی*:</label>
+            <input type="text" id="family" name="nfamily" dir="rtl" placeholder="نام خانوادگی را وارد کنید" required minlength="3" Lang="fa-IR">
+            <label for="npname">نام پدر:</label>
+            <input type="text" id="pname" name="npname" dir="rtl" required minlength="3" Lang="fa-IR">
+            <label for="ndate">تاریخ تولد:</label>
+            <input type="date" id="birth" name="ndate" required>
+            <label for="ncodM">کدملی*:</label>
+            <input type="text" id="codM" name="ncodM" minlength="10" maxlength="12">
+            <label for="nsheba">شماره شبا:</label>
+            <input type="text" id="sheba" name="nsheba" placeholder="IR" required>
+            <label for="nemail">ایمیل:</label>
+            <input type="email" id="email" name="nemail" pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/">
 
-    </form>
+            <div class="btn">
+                <input type="submit" value="ثبت نام" onsubmit="submit()">
+            </div>
+        </form>
+    </div>
+
+
+
+
+    </script>
 </body>
+
 </html>
