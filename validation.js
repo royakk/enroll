@@ -1,51 +1,58 @@
-function submit() {
+function registeration_check() {
     var x=true;
-    var date= new date();
+    // var date= new date();
     var name = document.getElementById("name").value;
     var family = document.getElementById("family").value;
     var pname = document.getElementById("pname").value;
     var birth = document.getElementById("birth").value;
-    var codM = document.getElementById("codM").value;
+    var codm = document.getElementById("codM").value;
+    // var codM= Number(codm);
     var sheba = document.getElementById("sheba").value;
-    var email = document.getElementById("email").value;
-    
-    
+    // var email = document.getElementById("email").value;
 
-    if (name == "") {
+    if (name == "" ||!ispersianstring(name) ) {
+       
         document.getElementById("name").style.borderColor = "red";
         x=false;
+
     }
-    if (family == "") {
+    if (family == "" ||!ispersianstring(family) ) {
         document.getElementById("family").style.borderColor = "red";
         x=false;
     }
-    if (pname == "") {
+    
+    
+    if (pname == "" ||!ispersianstring(pname) ) {
         document.getElementById("pname").style.borderColor = "red";
         x=false;
     }
-    if (birth == "" || birth=="0000-00-00" || birth==date) {
+    if (birth == "" || birth=="yyyy/dd/mm" || !validateDate ) {
+        
         document.getElementById("birth").style.borderColor = "red";
         x=false;
     }
-    if (codM =="" || checkMelliCode == "false") {
+    if (codM =="" || checkMelliCode(codm) == false) {
+        console.log("ccc");
         document.getElementById("codM").style.borderColor = "red";
         x=false;
     }
-    if (sheba == "" ||  checksheba == "false") {
+    if (sheba == "" ||  checksheba(sheba) == false) {
         document.getElementById("sheba").style.borderColor = "red";
         x=false;
     }
-    if (email == "" || checkEmail == "false") {
-        document.getElementById("email").style.borderColor = "red";
-        x=false;
-    }
+    // if (email == "" || checkEmail == "false") {
+    //     document.getElementById("email").style.borderColor = "red";
+    //     x=false;
+    // }
     if (x==true) {
         alert("ثبت نام با موفقیت انجام شد");
     }
+    return x;
+   
 
 };
 function checkMelliCode(codM) {
-    if (codM.length == 10) {
+    if (isNaN(codM) || codM.length == 10) {
         if (codM == '1111111111' ||
             codM == '0000000000' ||
             codM == '2222222222' ||
@@ -80,23 +87,44 @@ function checkMelliCode(codM) {
     }
 }
 function checksheba(sheba) {
-    var shebaReg =RegExp( "/^(?:IR)(?=.{24}$)[0-9]*$/");
+    // var shebaReg =/^(?:IR)(?=.{24}$)[0-9]*$/;
+    // if (!sheba.startsWith('IR')){
+    // sheba='IR'+sheba;
+    var shebaReg = /IR[0-9]{24}/;
+
     if (shebaReg.test(sheba)) {
+        console.log("sheba");
         return true;
     }
     else {
         return false;
     }
 }
-function checkEmail(email) {
-    var emailReg = new RegExp("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$") ;
-    if (emailReg.test(email)) {
-        return true;
+// function checkEmail(email) {
+//     var emailReg = new RegExp("/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/") ;
+//     if (emailReg.test(email)) {
+//         return true;
+//     }
+//     else {
+//         return false;
+//     }
+// }
+// checkMelliCode(codM);
+// checksheba(sheba);
+// checkEmail(email);
+function ispersianstring(name){
+    
+    var p = /^[\u0600-\u06FF\s]+$/;
+    if (p.test(name)) {
+       return true;
     }
-    else {
-        return false;
     }
-}
-checkMelliCode(codM);
-checksheba(sheba);
-checkEmail(email);
+    function validateDate(birth) {
+        var date_regex = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/ ;
+        if (date_regex.test(birth)){
+        return true
+    }
+    }
+
+
+   
